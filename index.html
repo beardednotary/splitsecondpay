@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SplitSecond Pay - Split bills in seconds</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: #000;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            text-align: center;
+        }
+        .container { max-width: 600px; }
+        h1 { 
+            font-size: 48px; 
+            font-weight: 800; 
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #00D4AA, #00A885);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        p { 
+            font-size: 20px; 
+            color: #999; 
+            margin-bottom: 40px;
+            line-height: 1.5;
+        }
+        .cta {
+            display: inline-block;
+            background: #00D4AA;
+            color: #000;
+            padding: 16px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            transition: transform 0.2s;
+        }
+        .cta:hover { transform: scale(1.05); }
+        .features {
+            margin-top: 60px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+        }
+        .feature {
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 12px;
+        }
+        .feature strong { color: #00D4AA; display: block; margin-bottom: 8px; }
+        footer {
+            margin-top: 80px;
+            color: #666;
+            font-size: 14px;
+        }
+        footer a { color: #00D4AA; text-decoration: none; }
+    </style>
+    <script>
+        // Auto-redirect mobile users
+        if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+            window.location.href = "https://apps.apple.com/app/idYOUR_APP_ID";
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>SplitSecond Pay</h1>
+        <p>The fastest way to split restaurant bills.<br>3 taps. Every time.</p>
+        
+        <a href="https://apps.apple.com/app/idYOUR_APP_ID" class="cta">
+            Download for iPhone
+        </a>
+
+        <div class="features">
+            <div class="feature">
+                <strong>⚡ Lightning Fast</strong>
+                Split any bill in 3 taps
+            </div>
+            <div class="feature">
+                <strong>🧮 Smart Math</strong>
+                Auto tax & tip calculation
+            </div>
+            <div class="feature">
+                <strong>🔒 Private</strong>
+                No data collection
+            </div>
+        </div>
+
+        <footer>
+            <a href="privacy-policy.html">Privacy Policy</a> • 
+            <a href="mailto:support@splitsecondpay.com">Support</a><br>
+            © 2025 SplitSecond Pay
+        </footer>
+    </div>
+</body>
+</html>
