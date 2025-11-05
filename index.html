@@ -1,9 +1,19 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SplitSecond Pay - Split bills in seconds</title>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7L5HG90N3Z"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-7L5HG90N3Z');
+    </script>
+    
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -42,8 +52,18 @@
             font-weight: 600;
             font-size: 18px;
             transition: transform 0.2s;
+            margin-bottom: 12px;
         }
         .cta:hover { transform: scale(1.05); }
+        .android-notice {
+            display: none;
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+            border: 2px solid #00D4AA;
+        }
+        .android-notice strong { color: #00D4AA; }
         .features {
             margin-top: 60px;
             display: grid;
@@ -63,11 +83,47 @@
         }
         footer a { color: #00D4AA; text-decoration: none; }
     </style>
+    
     <script>
-        // Auto-redirect mobile users
-        if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-            window.location.href = "https://apps.apple.com/us/app/splitsecond-pay/id6754619328";
-        }
+        window.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const utmSource = urlParams.get('utm_source');
+            const utmMedium = urlParams.get('utm_medium');
+            
+            const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+            const isAndroid = /Android/i.test(navigator.userAgent);
+            
+            // Track the share link click in Analytics
+            if (utmSource === 'app' && utmMedium === 'share') {
+                gtag('event', 'app_share_link_clicked', {
+                    'event_category': 'sharing',
+                    'event_label': 'bill_split_share'
+                });
+            }
+            
+            // Auto-redirect iOS users to App Store
+            if (isIOS) {
+                // Track the redirect
+                gtag('event', 'app_store_redirect', {
+                    'event_category': 'download',
+                    'event_label': utmSource === 'app' ? 'from_share' : 'from_web'
+                });
+                
+                window.location.href = "https://apps.apple.com/us/app/splitsecond-pay/id6754619328";
+            }
+            
+            // Show Android notice for Android users
+            if (isAndroid) {
+                document.getElementById('android-notice').style.display = 'block';
+                document.getElementById('ios-cta').style.display = 'none';
+                
+                // Track Android interest
+                gtag('event', 'android_interest', {
+                    'event_category': 'platform',
+                    'event_label': 'android_visitor'
+                });
+            }
+        });
     </script>
 </head>
 <body>
@@ -75,10 +131,21 @@
         <h1>SplitSecond Pay</h1>
         <p>The fastest way to split restaurant bills.<br>3 taps. Every time.</p>
         
-        <a href="https://apps.apple.com/us/app/splitsecond-pay/id6754619328" class="cta">
+        <a href="https://apps.apple.com/us/app/splitsecond-pay/id6754619328" 
+           class="cta" 
+           id="ios-cta"
+           onclick="gtag('event', 'download_button_clicked', {'event_category': 'download', 'event_label': 'ios'});">
             Download for iPhone
         </a>
-
+        
+        <div class="android-notice" id="android-notice">
+            <strong>🤖 Coming Soon to Android!</strong>
+            <p style="margin-top: 12px; font-size: 16px;">
+                SplitSecond Pay is currently available on iOS.<br>
+                Android version launching soon.
+            </p>
+        </div>
+        
         <div class="features">
             <div class="feature">
                 <strong>⚡ Lightning Fast</strong>
@@ -93,7 +160,7 @@
                 No data collection
             </div>
         </div>
-
+        
         <footer>
             <a href="privacy-policy.html">Privacy Policy</a> • 
             <a href="mailto:support@splitsecondpay.com">Support</a><br>
