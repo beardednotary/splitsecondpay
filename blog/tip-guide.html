@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Tip Calculator Guide: Before or After Tax? - SplitSecond Pay Blog</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="Should you calculate your tip before or after sales tax? We break down the standard etiquette and show you how SplitSecond Pay handles both scenarios." />
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7L5HG90N3Z"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-7L5HG90N3Z');
+    </script>
+    
+    <style>
+      :root {
+        --bg: #040816;
+        --bg-soft: #070b1f;
+        --card: #0b1022;
+        --accent: #43e8d8;
+        --accent-soft: rgba(67, 232, 216, .15);
+        --accent-dark: #10b3a7;
+        --text: #e5e7eb;
+        --muted: #9ca3af;
+        --danger: #f97373;
+        --radius-lg: 20px;
+        --radius-md: 12px;
+        --shadow-soft: 0 18px 40px rgba(0, 0, 0, .4);
+        --max-width: 1080px;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+          "Segoe UI", Roboto, sans-serif;
+        background: radial-gradient(circle at top, #111827 0, #020617 55%, #000 100%);
+        color: var(--text);
+        -webkit-font-smoothing: antialiased;
+        line-height: 1.6; /* Added for better reading */
+      }
+
+      a {
+        color: var(--accent); /* Changed link color for visibility on body copy */
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .page {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .wrap {
+        width: 100%;
+        max-width: 800px; /* Narrowed width for blog content readability */
+        margin: 0 auto;
+        padding: 20px 16px 40px;
+      }
+
+      header {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .brand-mark {
+        width: 34px;
+        height: 34px;
+        border-radius: 12px;
+        background: radial-gradient(circle at top, #1f2937 0, #020617 60%, #000 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        font-size: 20px;
+        letter-spacing: .03em;
+        color: #f9fafb;
+      }
+
+      .brand-meta {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+
+      .brand-name {
+        font-weight: 700;
+        font-size: 15px;
+      }
+
+      .brand-tag {
+        font-size: 11px;
+        color: var(--muted);
+      }
+
+      nav {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        font-size: 14px;
+        color: var(--muted);
+      }
+
+      nav a {
+        position: relative;
+        padding-bottom: 2px;
+        color: var(--muted); /* Reset nav link color */
+      }
+
+      nav a:hover::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 1px;
+        background: var(--accent);
+      }
+
+      .chip-new {
+        font-size: 11px;
+        padding: 3px 7px;
+        border-radius: 999px;
+        background: rgba(148, 163, 184, .12);
+        color: var(--muted);
+      }
+
+      /* ARTICLE STYLES */
+      .article-header {
+          margin-top: 40px;
+          margin-bottom: 30px;
+          text-align: center;
+      }
+      .article-header h1 {
+          font-size: clamp(28px, 4vw, 42px);
+          line-height: 1.1;
+          font-weight: 800;
+          letter-spacing: -.03em;
+          margin-bottom: 10px;
+      }
+      .article-meta {
+          font-size: 14px;
+          color: var(--muted);
+      }
+      .article-meta strong {
+          color: var(--text);
+      }
+
+      .article-content {
+          font-size: 16px;
+          color: var(--muted);
+      }
+      .article-content h2 {
+          font-size: 24px;
+          font-weight: 700;
+          color: var(--text);
+          margin-top: 35px;
+          margin-bottom: 15px;
+          border-bottom: 1px solid rgba(148, 163, 184, .1);
+          padding-bottom: 5px;
+      }
+      .article-content h3 {
+          font-size: 18px;
+          font-weight: 600;
+          color: var(--text);
+          margin-top: 25px;
+          margin-bottom: 10px;
+      }
+      .article-content p {
+          margin-bottom: 20px;
+      }
+      .article-content strong {
+          color: var(--text);
+      }
+      .article-content ul {
+          margin-left: 25px;
+          margin-bottom: 20px;
+          list-style: disc;
+      }
+      
+      /* Table styling */
+      table {
+          width: 100%;
+          border-collapse: collapse;
+          margin: 20px 0;
+          font-size: 15px;
+          border-radius: var(--radius-md);
+          overflow: hidden;
+      }
+      th, td {
+          padding: 12px 15px;
+          text-align: left;
+          border: 1px solid rgba(148, 163, 184, .1);
+      }
+      th {
+          background-color: var(--card);
+          color: var(--accent);
+          font-weight: 600;
+          text-transform: uppercase;
+          font-size: 12px;
+      }
+      td {
+          background-color: var(--bg-soft);
+          color: var(--muted);
+      }
+      td strong {
+        color: var(--text);
+      }
+
+      /* Formula styling */
+      .formula-box {
+          background: var(--card);
+          border: 1px solid rgba(148, 163, 184, .2);
+          border-left: 5px solid var(--accent);
+          padding: 15px;
+          margin: 20px 0;
+          font-family: 'Consolas', 'Courier New', monospace;
+          color: var(--text);
+          font-size: 15px;
+          border-radius: var(--radius-md);
+          overflow-x: auto;
+      }
+      
+      /* CTA Box */
+      .cta-box {
+          background: radial-gradient(circle at top left,
+            rgba(67, 232, 216, .1) 0,
+            rgba(15, 23, 42, 1) 70%);
+          border: 1px solid rgba(67, 232, 216, .2);
+          padding: 25px;
+          margin: 40px 0;
+          border-radius: var(--radius-lg);
+          text-align: center;
+      }
+      .cta-box h3 {
+          color: var(--text);
+          margin-bottom: 15px;
+          font-size: 20px;
+      }
+      .cta-box p {
+          color: var(--muted);
+          max-width: 500px;
+          margin: 0 auto 20px;
+      }
+      .cta-box .btn-primary {
+          /* Inherit styling from index.html */
+          margin-top: 10px;
+      }
+
+
+      /* FOOTER (Copied from index.html) */
+      footer {
+        margin-top: 40px;
+        padding-top: 18px;
+        border-top: 1px solid rgba(148, 163, 184, .2);
+        font-size: 12px;
+        color: var(--muted);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .footer-links a {
+        text-decoration: underline;
+        text-decoration-color: rgba(148, 163, 184, .6);
+        color: var(--muted);
+      }
+      
+      /* Ensures the link in the header points back to the main page */
+      nav a[href="/"] {
+          color: var(--accent);
+      }
+      
+      .brand a {
+          color: var(--text);
+      }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="wrap">
+            <header>
+                <div class="brand">
+                    <a href="/"> <div class="brand-mark">S</div>
+                    </a>
+                    <div class="brand-meta">
+                        <div class="brand-name">SplitSecond Pay</div>
+                        <div class="brand-tag">Tip Calculator Guide</div>
+                    </div>
+                </div>
+                <nav>
+                    <a href="/">Home</a> <a href="/blog/tip-guide.html">Blog</a>
+                    <a href="/#features">Features</a>
+                    <span class="chip-new">New · iOS</span>
+                </nav>
+            </header>
+            
+            <main class="article-content">
+                <div class="article-header">
+                    <h1>How to Calculate Tip Before or After Tax (And Why It Matters)</h1>
+                    <p class="article-meta">Published: <time datetime="2025-11-21">November 21, 2025</time> by <strong>SplitSecond Pay</strong></p>
+                </div>
+
+                <h2>The Great Debate: Pre-Tax vs. Post-Tax Tipping</h2>
+                <p>You’re standing at the table, bill in hand, trying to figure out the tip. The question isn't just **how much** to tip, but **what amount** to apply that percentage to: **the pre-tax subtotal** or **the final, post-tax total**?</p>
+                <p>While both methods are common, understanding the difference—and what's considered proper etiquette—can save you money and ensure your server gets what they deserve.</p>
+
+                <hr/>
+
+                <h2>💰 The Two Methods Explained</h2>
+                <p>To illustrate, let's use a simple example:</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Scenario</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Subtotal (Food & Drinks)</strong></td>
+                            <td>$50.00</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Sales Tax (Assumed)</strong></td>
+                            <td>8% ($4.00)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Bill Total (Before Tip)</strong></td>
+                            <td>$54.00</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tip Rate (Assumed)</strong></td>
+                            <td>20%</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>1. Method 1: Tipping on the Pre-Tax Subtotal (The Standard)</h3>
+                <p>This method calculates the tip based **only** on the cost of the goods and services you received, which is the **subtotal (\$50.00)**.</p>
+                
+                <div class="formula-box">
+                    $$\text{Tip Amount} = \text{Subtotal} \times \text{Tip Rate}$$
+                </div>
+                
+                <p><strong>Calculation:</strong></p>
+                <ul>
+                    <li>Tip Amount: $50.00 \times 0.20 = \mathbf{\$10.00}$</li>
+                    <li>Final Total (with tip): $54.00 + \$10.00 = \mathbf{\$64.00}$</li>
+                </ul>
+                <p><strong>Why it's the standard:</strong> Servers primarily provide service on the food and drinks, not the tax. Tipping on the pre-tax amount is the most widely accepted and recommended method for fair compensation.</p>
+
+                <h3>2. Method 2: Tipping on the Post-Tax Total (The Easy Way)</h3>
+                <p>This method calculates the tip based on the **total amount after tax (\$54.00)**.</p>
+
+                <div class="formula-box">
+                    $$\text{Tip Amount} = (\text{Subtotal} + \text{Tax}) \times \text{Tip Rate}$$
+                </div>
+                
+                <p><strong>Calculation:</strong></p>
+                <ul>
+                    <li>Tip Amount: $54.00 \times 0.20 = \mathbf{\$10.80}$</li>
+                    <li>Final Total (with tip): $54.00 + \$10.80 = \mathbf{\$64.80}$</li>
+                </ul>
+                <p><strong>Why it's often used:</strong> It's easier and faster for mental math because the final total is often a clean number, and it’s a quick shortcut if you can’t easily find the subtotal.</p>
+                
+                <hr/>
+
+                <h2>⚖️ Why the Difference Matters</h2>
+                <p>In the example above, the difference is only **\$0.80** (\$10.80 vs. \$10.00). While small for a single bill, the differences add up:</p>
+                <ul>
+                    <li>**For the customer:** Tipping on the post-tax total costs you slightly more. If you dine out frequently, this extra cost can accumulate over the year.</li>
+                    <li>**For the server:** They receive the same base tip either way, but the post-tax method provides a small, welcome bonus. Since tax rates are often a matter of state or local jurisdiction, the tax portion isn't a factor in their service quality.</li>
+                </ul>
+                <p>The rule of thumb is: **Tip on the pre-tax total.** If you tip on the final, post-tax total, you are essentially tipping on the government's portion of the bill, but it is considered an equally generous gesture.</p>
+                
+                <div class="cta-box">
+                    <h3>⚡️ Your Solution: Let SplitSecond Pay Handle the Math</h3>
+                    <p>The great news is that you don't have to choose between speed and accuracy. SplitSecond Pay allows you to set your default preference once—whether the tip rate should be applied **before tax** or **after tax**—and handles the complex math instantly.</p>
+                    <a href="https://apps.apple.com/us/app/splitsecond-pay/id6754619328" class="btn-primary">
+                      <span></span>
+                      <span>Download SplitSecond Pay Today</span>
+                    </a>
+                </div>
+
+                <p>Download **SplitSecond Pay** today to permanently eliminate the "before vs. after tax" tip confusion and keep your focus where it belongs: on your friends, not on the calculator.</p>
+                
+                </main>
+
+            <footer>
+                <div> © <span id="year-blog"></span> SplitSecond Pay · DahVio Studios </div>
+                <div class="footer-links">
+                    <a href="/privacy.html">Privacy</a>
+                    <a href="/support.html">Support</a>
+                    <a href="mailto:support@splitsecondpay.com">Contact</a>
+                </div>
+            </footer>
+        </div>
+    </div>
+    
+    <script>
+      document.getElementById("year-blog").textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
