@@ -5,71 +5,46 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SplitSecond Pay Blog</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: #0B0C0D;
-      color: #fff;
-      line-height: 1.6;
-      padding: 24px;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    h1 {
-      font-size: 32px;
-      margin-bottom: 16px;
-      font-weight: 700;
-      text-align: center;
-    }
-    .subtitle {
-      text-align: center;
-      color: #a0a0a0;
-      margin-bottom: 40px;
-    }
-    .post {
-      padding: 20px;
-      background: #131416;
-      border-radius: 12px;
-      margin-bottom: 28px;
-      transition: transform 0.15s ease, background 0.15s ease;
-      border: 1px solid #1f1f1f;
-    }
-    .post:hover {
-      transform: translateY(-3px);
-      background: #17181a;
-    }
-    .post-title {
-      font-size: 20px;
-      font-weight: 600;
-      margin-bottom: 6px;
-      color: #00D4AA;
-      text-decoration: none;
-      display: block;
-    }
-    .post-desc {
-      font-size: 15px;
-      color: #c1c1c1;
-    }
-  </style>
+    <link rel="stylesheet" href="/assets/styles.css" />
+      
 </head>
 <body>
+  <div class="page">
+    <div class="wrap">
+      <header>
+        <div class="brand">
+          <div class="brand-mark">S</div>
+          <div class="brand-meta">
+            <div class="brand-name">SplitSecond Pay</div>
+            <div class="brand-tag">Bill Splitter & Tip Calculator</div>
+          </div>
+        </div>
+        <nav>
+          <a href="/">Home</a>
+          <a href="/blog/">Blog</a>
+          <a href="/#features">Features</a>
+          <a href="/#faq">FAQ</a>
+        </nav>
+      </header>
 
-  <h1>SplitSecond Pay Blog</h1>
-  <div class="subtitle">Guides, tips, etiquette, and everything bill-splitting</div>
+  <main class="article-page">
+    <div class="article-header">      
+      <h1 class="article-title">SplitSecond Pay Blog</h1>
+      <p class="article-meta">Guides, tips, etiquette, and everything bill-splitting</p>
+    </div>
 
   <!-- Example Article Listings -->
-  <div class="post">
-    <a class="post-title" href="articles/how-to-split-a-restaurant-bill.html">
-      How to Split a Restaurant Bill in 2025 (No Math Needed)
+  <div class="blog-list">
+    <article class="blog-card">
+    <a href="blog/how-to-split-a-restaurant-bill.html">
+      <h2 class="blog-card-title">How to Split a Restaurant Bill in 2025 (No Math Needed)</h2>
     </a>
-    <div class="post-desc">
-      A modern guide to splitting checks — including tipping, tax, and group orders.
-    </div>
-  </div>
+            <p class="blog-card-excerpt">
+              Step-by-step ways to split the check fairly with friends, dates, and coworkers — plus when to *not* go 50/50.
+            </p>
+          </article>
 
-  <div class="post">
+  <!-- <div class="post">
     <a class="post-title" href="articles/splitting-the-bill-on-a-first-date.html">
       Should You Split the Bill on a First Date?
     </a>
@@ -85,7 +60,22 @@
     <div class="post-desc">
       A global guide on when to tip, when NOT to tip, and how not to offend.
     </div>
+  </div> -->
+</main>
+
+<footer>
+        <div>© <span id="year"></span> SplitSecond Pay · DahVio Studios</div>
+        <div class="footer-links">
+          <a href="/privacy-policy.html">Privacy</a>
+          <a href="/support.html">Support</a>
+          <a href="mailto:support@splitsecondpay.com">Contact</a>
+        </div>
+      </footer>
+    </div>
   </div>
 
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
