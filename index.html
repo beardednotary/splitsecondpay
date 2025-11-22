@@ -36,13 +36,13 @@
         
         // NOTE: If you decide later you *don't* want to auto-redirect iOS visitors,
         // you can safely comment out this block.
-        if (isIOS) {
-          gtag('event', 'app_store_redirect', {
-            event_category: 'download',
-            event_label: utmSource === 'app' ? 'from_share' : 'from_web'
-          });
-          window.location.href = "https://apps.apple.com/us/app/splitsecond-pay/id6754619328";
-        }
+      // if (isIOS) {
+       //   gtag('event', 'app_store_redirect', {
+        //    event_category: 'download',
+        //    event_label: utmSource === 'app' ? 'from_share' : 'from_web'
+        //  });
+        //  window.location.href = "https://apps.apple.com/us/app/splitsecond-pay/id6754619328";
+      //  } 
         
         if (isAndroid) {
           const androidNotice = document.getElementById('android-notice');
