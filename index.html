@@ -2,263 +2,248 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>SplitSecond Pay: Bill Splitter, Tip Calculator, Venmo Requests</title>
+    <title>SplitSecond Pay - Split restaurant bills in seconds</title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta name="description" content="The fastest bill splitter app for dining out. Automatically calculate tip and tax, split the total, and send Venmo/PayPal requests instantly. Private, no sign-up needed." />
-    
+    <meta
+      name="description"
+      content="Split restaurant bills fast. Calculate tip, add tax, split evenly, and send payment requests in seconds."
+    />
+
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-7L5HG90N3Z"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-7L5HG90N3Z');
+      gtag("js", new Date());
+      gtag("config", "G-7L5HG90N3Z");
     </script>
 
     <link rel="stylesheet" href="/assets/styles.css" />
 
     <script>
-      window.addEventListener('DOMContentLoaded', function() {
+      window.addEventListener("DOMContentLoaded", function () {
         const urlParams = new URLSearchParams(window.location.search);
-        const utmSource = urlParams.get('utm_source');
-        const utmMedium = urlParams.get('utm_medium');
-        
+        const utmSource = urlParams.get("utm_source");
+        const utmMedium = urlParams.get("utm_medium");
+
         const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
         const isAndroid = /Android/i.test(navigator.userAgent);
-        
-        // Track share-link clicks
-        if (utmSource === 'app' && utmMedium === 'share') {
-          gtag('event', 'app_share_link_clicked', {
-            event_category: 'sharing',
-            event_label: 'bill_split_share'
+
+        if (utmSource === "app" && utmMedium === "share") {
+          gtag("event", "app_share_link_clicked", {
+            event_category: "sharing",
+            event_label: "bill_split_share"
           });
         }
-        
-        // NOTE: If you decide later you *don't* want to auto-redirect iOS visitors,
-        // you can safely comment out this block.
-      // if (isIOS) {
-       //   gtag('event', 'app_store_redirect', {
-        //    event_category: 'download',
-        //    event_label: utmSource === 'app' ? 'from_share' : 'from_web'
-        //  });
-        //  window.location.href = "https://apps.apple.com/us/app/splitsecond-pay/id6754619328";
-      //  } 
-        
+
+        if (isIOS && utmSource === "app" && utmMedium === "share") {
+          gtag("event", "app_store_redirect", {
+            event_category: "download",
+            event_label: "from_share"
+          });
+
+          setTimeout(() => {
+            window.location.href = "https://apps.apple.com/us/app/splitsecond-pay/id6754619328";
+          }, 600);
+        }
+
         if (isAndroid) {
-          const androidNotice = document.getElementById('android-notice');
-          const iosCta = document.getElementById('ios-cta');
-          if (androidNotice) androidNotice.style.display = 'block';
-          if (iosCta) iosCta.style.display = 'none';
-          gtag('event', 'android_interest', {
-            event_category: 'platform',
-            event_label: 'android_visitor'
-          });
+          const notice = document.getElementById("android-notice");
+          if (notice) notice.style.display = "block";
         }
+
+        const year = document.getElementById("year");
+        if (year) year.textContent = new Date().getFullYear();
       });
     </script>
   </head>
+
   <body>
     <div class="page">
       <div class="wrap">
-        <!-- HEADER -->
-        <header>
-          <div class="brand">
-            <a href="/">
-              <div class="brand-mark">S</div>
-            </a>
+        <header class="site-header">
+          <a class="brand" href="/" aria-label="SplitSecond Pay home">
+            <div class="brand-mark">S</div>
             <div class="brand-meta">
               <div class="brand-name">SplitSecond Pay</div>
               <div class="brand-tag">Bill Splitter & Tip Calculator</div>
             </div>
-          </div>
-          <nav>
-            <a href="/blog/">Blog</a>
-            <a href="#features">Features</a>
+          </a>
+
+          <nav class="site-nav" aria-label="Primary">
+            <a href="#problem">Why it exists</a>
             <a href="#how">How it works</a>
+            <a href="#features">Features</a>
+            <a href="#pro">Pro</a>
             <a href="#faq">FAQ</a>
-            <span class="chip-new">New · iOS</span>
+            <a class="chip-new" href="https://apps.apple.com/us/app/splitsecond-pay/id6754619328" rel="noopener">iOS</a>
           </nav>
         </header>
 
-        <!-- HERO -->
+        <div id="android-notice" class="notice" style="display:none;">
+          Android is coming soon.
+        </div>
+
         <main>
           <section class="hero" aria-labelledby="hero-title">
-            <div>
-              <div class="hero-badge-row">
-                <div class="hero-badge">
-                  <span style="width:7px;height:7px;border-radius:999px;background:#22c55e"></span>
-                  Live on the App Store
-                </div>
-                <div class="hero-badge">No logins · No ads</div>
-              </div>
-              <h1 id="hero-title" class="hero-title">
-                Split Restaurant Bills, Calculate Tip, and Send Venmo Requests in Seconds.
-              </h1>
+            <div class="hero-left">
+              <h1 id="hero-title" class="hero-title">Split restaurant bills in seconds.</h1>
+
               <p class="hero-sub">
-                SplitSecond Pay is the fastest bill splitting calculator for group dining. Its unique one-screen design lets you quickly calculate tip, tax, and the per-person total—ready for Venmo in just 3 taps.
+                Calculate tip, add tax, split evenly, and send payment requests - all on one clean screen.
               </p>
-              <div class="hero-actions" id="ios-cta">
-                <a href="https://apps.apple.com/us/app/splitsecond-pay/id6754619328" class="btn-primary">
-                  <span></span>
+
+              <div class="hero-actions">
+                <a
+                  href="https://apps.apple.com/us/app/splitsecond-pay/id6754619328"
+                  class="btn-primary"
+                  rel="noopener"
+                >
                   <span>Download on the App Store</span>
                 </a>
+
                 <a href="#how" class="btn-ghost">See how it works</a>
-              </div>
-              <p id="android-notice" class="hero-footnote" style="display:none;">
-                Android version is coming soon. Join the iOS launch now or bookmark this page to check back later.
-              </p>
-              <p class="hero-footnote">
-                No accounts, no spreadsheets — just clean splits for real-world bills.
-              </p>
-              <div class="tag-row" aria-label="Highlights">
-                <div class="tag">Automatic Sales Tax</div>
-                <div class="tag">Custom Tip Options</div>
-                <div class="tag">Instant Venmo/PayPal Link</div>
               </div>
             </div>
 
             <aside class="hero-card" aria-label="App preview">
-              <div class="hero-card-head">
-                <span><strong>Tonight’s tab</strong> with friends</span>
-                <span style="font-size:11px;color:var(--text-muted)">No spreadsheets needed</span>
-              </div>
               <div class="hero-phone">
-                <img src="/assets/hero-phone.png" alt="SplitSecond Pay calculation screen showing a bill split across several people" />
-              </div>
-              <div class="hero-card-foot">
-                Add the total, tip, and people — SplitSecond Pay figures out everyone’s share so you can pay and move on.
+                <img
+                  src="/assets/hero-phone.png"
+                  alt="SplitSecond Pay screen showing tip, tax, and per-person totals"
+                />
               </div>
             </aside>
           </section>
 
-          <!-- FEATURES -->
-          <section id="features" aria-labelledby="features-title">
-            <h2 id="features-title">Stop the Awkward Math: Features Designed for Dining Out</h2>
-            <p class="lead">
-              The app is built for <strong>real-world, messy bills</strong> — not textbook examples.
-            </p>
+          <section id="problem" aria-labelledby="problem-title" class="section">
+            <h2 id="problem-title">Dinner shouldn&#39;t turn into math class.</h2>
+            <p class="lead">Everyone&#39;s been there.</p>
+            <p>The check lands. Someone grabs their phone.</p>
+            <p>Someone else says "Wait, does that include tax?"</p>
+            <p>Then comes the tip debate.</p>
+            <p>SplitSecond Pay removes the friction.</p>
+            <p>One total.</p>
+            <p>One tip choice.</p>
+            <p>One tap to split.</p>
+            <p>Done.</p>
+          </section>
+
+          <section id="how" aria-labelledby="how-title" class="section">
+            <h2 id="how-title">3 taps. That&#39;s it.</h2>
+
+            <div class="how-grid">
+              <ol class="steps">
+                <li>
+                  <div>
+                    <span class="label">Step 1</span>
+                    Enter the bill total.
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <span class="label">Step 2</span>
+                    Choose your tip.
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <span class="label">Step 3</span>
+                    Select how many people.
+                  </div>
+                </li>
+              </ol>
+            </div>
+
+            <p>Everyone&#39;s share updates instantly.</p>
+            <p>No extra screens. No account. No setup required.</p>
+          </section>
+
+          <section id="features" aria-labelledby="features-title" class="section">
+            <h2 id="features-title">Built for real restaurant bills.</h2>
+
             <div class="feature-grid">
               <article class="feature-card">
-                <div class="feature-label">Made for the table</div>
-                <h3>Calculate Tip & Tax Automatically</h3>
-                <p>
-                  Forget manually looking up the sales tax rate. SplitSecond Pay factors in your local tax and lets you set custom tip preferences (pre- or post-tax) once, so you never have to think about it again.
-                </p>
+                <h3>Automatic tax support</h3>
+                <p>Set your local tax rate once. It&#39;s added automatically.</p>
               </article>
+
               <article class="feature-card">
-                <div class="feature-label">Fast by design</div>
-                <h3>The 3-Tap Difference: Split the Check Instantly</h3>
-                <p>
-                  Other apps make you tap through screens. SplitSecond uses one intuitive input screen. Enter the total, tap the tip, tap the split number—the result appears instantly. It's the fastest way to find everyone's share.
-                </p>
+                <h3>Custom tip presets</h3>
+                <p>Choose your default tip percentages and forget about it.</p>
               </article>
+
               <article class="feature-card">
-                <div class="feature-label">Pro upgrade</div>
-                <h3>SplitSecond Pay Pro: The Ultimate Convenience</h3>
-                <p>
-                  Upgrade to Pro to unlock <strong>direct Venmo and PayPal requests</strong> (pre-filled with the exact amount),
-                  <strong>OCR Receipt Scanning</strong>, and unlimited history tracking. Keep the free app for simple splits, go Pro for power.
-                </p>
+                <h3>Round up option</h3>
+                <p>Round up to avoid awkward cents.</p>
+              </article>
+
+              <article class="feature-card">
+                <h3>Works offline</h3>
+                <p>No signal in the basement? No problem.</p>
               </article>
             </div>
           </section>
 
-          <!-- HOW IT WORKS -->
-          <section id="how" aria-labelledby="how-title">
-            <h2 id="how-title">3 Taps. Done. The Fastest Split at the Table.</h2>
-            <p class="lead">
-              We respect your time. Here is the entire process for splitting any standard bill with SplitSecond Pay.
-            </p>
-            <div class="how-grid">
-              <div>
-                <ol class="steps">
-                  <li>
-                    <div>
-                      <span class="label">Tap 1: Enter the Bill Total</span>
-                      Open the app and simply type the final subtotal. Tax is added automatically, and you can instantly adjust your preset tip percentage (e.g., to 20%).
-                    </div>
-                  </li>
-                  <li>
-                    <div>
-                      <span class="label">Tap 2: Choose How Many Ways</span>
-                      Select the number of people splitting the bill with a single tap. The per-person amount updates instantly in large, easy-to-read numbers.
-                    </div>
-                  </li>
-                  <li>
-                    <div>
-                      <span class="label">Tap 3: Send Payment Request</span>
-                      Use the free <strong>Share via Text</strong> summary, or go Pro to unlock
-                      <strong>direct Venmo or PayPal deep links</strong> that pre-fill the exact amount for instant payment.
-                    </div>
-                  </li>
-                  <li>
-                    <div>
-                      <span class="label">[Optional] The Pro Advantage</span>
-                      Need to split by item or use advanced tracking? <strong>SplitSecond Pay Pro</strong> adds power features like
-                      <strong>Receipt Scanning</strong> without slowing down the core app.
-                    </div>
-                  </li>
-                </ol>
-              </div>
-              <aside class="how-shot">
-                <img src="/assets/history-screen.png" alt="SplitSecond Pay screen showing a recent bill split and per-person amounts" />
-                <div class="how-shot-note">
-                  SplitSecond Pay screen showing a recent bill split and per-person amounts.
-                </div>
-              </aside>
-            </div>
+          <section id="pro" aria-labelledby="pro-title" class="section">
+            <h2 id="pro-title">Want more power?</h2>
+            <p class="lead">Upgrade to SplitSecond Pay Pro to unlock:</p>
+
+            <ul>
+              <li>Receipt scanning (snap and split)</li>
+              <li>Direct Venmo & PayPal requests</li>
+              <li>Unlimited bill history</li>
+              <li>Advanced payment preferences</li>
+            </ul>
+
+            <p>One time purchase. No subscription.</p>
           </section>
 
-          <!-- FAQ -->
-          <section id="faq" aria-labelledby="faq-title">
-            <h2 id="faq-title"><strong>FAQs: Quick Answers Before You Download</strong></h2>
-            <p class="lead">
-              We built SplitSecond Pay to solve common pain points. Here are the most common questions we hear.
-            </p>
+          <section id="faq" aria-labelledby="faq-title" class="section">
+            <h2 id="faq-title">Quick answers</h2>
+
             <div class="faq-grid">
               <article class="faq-card">
-                <h3><strong>What is SplitSecond Pay best for?</strong></h3>
-                <p>
-                  It’s optimized for <strong>group dining, bars, and cafés</strong>. The simple one-screen flow is tuned for the moment the paper check lands, but it works for any expense you need to split quickly.
-                </p>
+                <h3>Do my friends need the app?</h3>
+                <p>No. Only one person needs it to calculate the split.</p>
               </article>
+
               <article class="faq-card">
-                <h3><strong>Does every person need to download the app?</strong></h3>
-                <p>
-                  No. Only the person running the calculation needs the app. You calculate the share, then request payment from your friends using any method you prefer (Venmo, PayPal, Zelle, or cash).
-                </p>
+                <h3>Do you collect data?</h3>
+                <p>No account is required to use the app. Bill calculations and split history stay on your device.</p>
               </article>
+
               <article class="faq-card">
-                <h3><strong>Do you collect my data or require an account?</strong></h3>
-                <p>
-                  <strong>Absolutely not.</strong> SplitSecond Pay is <strong>privacy-first</strong>. We require no sign-up, no email, no password, and collect <strong>no usage data or analytics</strong>. All calculations stay on your device.
-                </p>
+                <h3>Is it really free?</h3>
+                <p>The core bill splitter is free. Pro features are optional.</p>
               </article>
-              <article class="faq-card">
-                <h3><strong>How is this app free? What's the business model?</strong></h3>
-                <p>
-                  The core, 3-tap splitting app is 100% free and has no ads. We offer <strong>SplitSecond Pay Pro</strong> as an optional one-time upgrade for users who want advanced features like
-                  <strong>direct Venmo/PayPal deep links</strong>, <strong>OCR Receipt Scanning</strong>, and unlimited history tracking.
-                </p>
-              </article>
+            </div>
+          </section>
+
+          <section aria-labelledby="footer-cta-title" class="section">
+            <h2 id="footer-cta-title">Stop doing awkward table math.</h2>
+            <p>Download SplitSecond Pay.</p>
+            <div class="hero-actions">
+              <a
+                href="https://apps.apple.com/us/app/splitsecond-pay/id6754619328"
+                class="btn-primary"
+                rel="noopener"
+              >
+                Download on the App Store
+              </a>
             </div>
           </section>
         </main>
 
-        <!-- FOOTER -->
-        <footer>
-          <div>© <span id="year"></span> SplitSecond Pay · DahVio Studios</div>
+        <footer class="site-footer">
+          <div>&copy; <span id="year"></span> SplitSecond Pay · DahVio Studios</div>
           <div class="footer-links">
             <a href="/privacy-policy.html">Privacy</a>
-            <a href="#">Support</a>
+            <a href="mailto:support@splitsecondpay.com">Support</a>
             <a href="mailto:support@splitsecondpay.com">Contact</a>
           </div>
         </footer>
       </div>
     </div>
-
-    <script>
-      document.getElementById("year").textContent = new Date().getFullYear();
-    </script>
   </body>
 </html>
